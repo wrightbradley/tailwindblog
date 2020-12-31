@@ -1,0 +1,27 @@
+{
+    "name": "tailwindblog",
+    "version": "0.0.1",
+    "description": "Files for a Hugo theme with Tailwindcss",
+    "main": "index.js",
+    "repository": "https://github.com/the-wright-engineer/tailwindblog",
+    "author": "the-wright-engineer",
+    "license": "MIT",
+    "scripts": {
+        "start": "hugo --gc"
+    },
+    "devDependencies": {
+        "@fullhuman/postcss-purgecss": "^3.1.3",
+        "autoprefixer": "^10.1.0",
+        "postcss": "^8.2.1",
+        "postcss-cli": "^8.3.1",
+        "postcss-import": "^12.0.1",
+        "postcss-purgecss": "^2.0.3",
+        "tailwindcss": "^2.0.2"
+    },
+    "browserslist": [
+        "last 1 version",
+        "> 1%",
+        "maintained node versions",
+        "not dead"
+    ]
+}

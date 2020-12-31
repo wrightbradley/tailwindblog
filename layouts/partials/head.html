@@ -1,0 +1,24 @@
+<head>
+    {{ $style := resources.Get "css/styles.css" | postCSS  (dict "config" "./assets/css/postcss.config.js") -}}
+    {{- if .Site.IsServer }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+    {{ else }}
+    {{- $styles := $styles| minify | fingerprint | resources.PostProcess -}}
+    | resources.Minify | resources.Fingerprint "sha512"  }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+    {{ end -}}
+    <!-- render the site title as it appears in config.toml when we are at the homepage and we will concatenate the section name when we are in a section page e.g. My New Hugo Site | Posts -->
+    {{ $title := print .Site.Title " | " .Title }}
+    {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
+    <title>{{ $title }}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700&display=swap');
+
+        .font-family-source-sans-pro {
+            font-family: "Source Sans Pro";
+        }
+    </style>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+</head>

@@ -1,0 +1,22 @@
+{{ define "main" }}
+<!-- Posts Section -->
+<section class="w-full flex flex-col items-center px-3 grid grid-cols-3 gap-5 sm:grid-cols-1 md:grid-cols-2">
+{{ range .Pages }}
+    <article class="flex flex-col shadow my-4">
+        <!-- Article Image -->
+        <a href="#" class="hover:opacity-75">
+            <img src="{{ .Params.articleimage }}">
+        </a>
+        <div class="bg-white flex flex-col justify-start p-6">
+            <a href="{{ .Permalink }}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{ .Params.categories }}</a>
+            <a href="{{ .Permalink }}" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ .Title }}</a>
+            <p href="#" class="text-sm pb-3">
+                By <a href="{{ .Permalink }}" class="font-semibold hover:text-gray-800">{{ .Params.Author }}</a>, Published on {{ dateFormat "Monday, Jan 2, 2006" .Date }}
+            </p>
+            <a href="{{ .Permalink }}" class="pb-6">{{ .Summary }}</a>
+            <a href="{{ .Permalink }}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </article>
+{{ end }}
+</section>
+{{ end }}
